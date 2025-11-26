@@ -1,6 +1,11 @@
+import { use } from "react";
 import { Link } from "react-router";
+import AuthContext from "../../AuthContext/AuthContext";
 
 const Register = () => {
+  const useContext=use (AuthContext)
+  console.log(useContext)
+
     return (
         <div>
             <h2>Welcome to the Register page </h2>
