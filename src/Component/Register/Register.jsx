@@ -3,15 +3,25 @@ import { Link } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 
 const Register = () => {
-  const useContext=use (AuthContext)
-  console.log(useContext)
+  const {register}=use(AuthContext)
+  
+  const handleRegister=(e)=>{
+    e.preventDefault()
+    
+    const email=e.target.email.value 
+    const password=e.target.password.value
+    console.log("My name is raj",email,password)
+    register(email,password)
+    
+
+  }
 
     return (
         <div>
             <h2>Welcome to the Register page </h2>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-2">
       <div className="card-body">
-        <form   className="fieldset">
+        <form onSubmit={handleRegister}  className="fieldset">
          
           <label className="label">Name</label>
           <input name="name" type="name" className="input" placeholder="Name" />
@@ -20,7 +30,7 @@ const Register = () => {
            <label className="label">Phone Number </label>
            <input name="phone_number" type="tel" className="input" placeholder="Phone_Number"/>
            <label className="label">Password</label>
-           <input type="password" className="input" placeholder="Password" />
+           <input name="password" type="password" className="input" placeholder="Password" />
            <label className="label">Country Name </label>
            <input type="text" className="input" placeholder="Country name" />
           <div className=" font-medium text-green-500"> You have All ready account ? <Link to={'/login'} ><span className="link link-hover text-red-500">Login</span></Link></div>
