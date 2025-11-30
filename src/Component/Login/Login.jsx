@@ -1,6 +1,12 @@
+import { use } from "react";
 import { Link } from "react-router";
+import AuthContext from "../../AuthContext/AuthContext";
 
 const Login = () => {
+  const {login}=use(AuthContext)
+
+
+  // login button 
     const handleLogin=(e)=>{
         e.preventDefault()
         console.log("welcome to the login page")
@@ -8,8 +14,18 @@ const Login = () => {
         const email=e.target.email.value;
         const password=e.target.password.value;
         console.log(name,email,password)
+        login(email,password)
+        .then((userCredential) => {
+          console.log(userCredential)
+    
+  })
+  .catch((error) => {
+    console.log(error)
+  });
 
     }
+
+    // main box 
     return (
         <div>
 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-2">
