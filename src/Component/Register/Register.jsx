@@ -12,6 +12,14 @@ const Register = () => {
     const password=e.target.password.value
     console.log("My name is raj",email,password)
     register(email,password)
+    .then((userCredential) => {
+      console.log(userCredential)
+    
+  })
+  .catch((error) => {
+    console.log(error)
+    
+  });
     
 
   }
