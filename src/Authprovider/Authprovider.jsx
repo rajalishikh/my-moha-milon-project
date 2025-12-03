@@ -1,10 +1,10 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect } from "react";
 import AuthContext from "../AuthContext/AuthContext";
 import { auth } from "../firebase_auth/firebase";
-import { useEffect } from "react";
 
 const Authprovider = ({children}) => {
-    console.log(children)
+    
     const register=(email,password)=>{
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -12,19 +12,21 @@ const Authprovider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     useEffect(()=>{
-       const UserInfo= onAuthStateChanged(auth, (user) => {
-        console.log("User Info",user)
+        const UserObserver=onAuthStateChanged(auth, (user) => {
 
-        return()=> {
-            UserInfo()
+            console.log("আমি কিন্ত নজর রাগতেসি ",user)
+        })
+
+        return ()=>{
+            UserObserver()
         }
-  
     },[])
 
 
     const value={
         register,
-        login
+        login,
+
         
      }
     return (
