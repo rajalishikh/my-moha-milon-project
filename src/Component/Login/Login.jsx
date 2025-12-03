@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 
 const Login = () => {
-  const {login}=use(AuthContext)
+  const {login,}=use(AuthContext)
 
 
   // login button 
