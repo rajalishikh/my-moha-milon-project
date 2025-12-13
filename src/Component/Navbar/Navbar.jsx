@@ -3,7 +3,16 @@ import '../../App.css';
 import { use } from 'react';
 import AuthContext from '../../AuthContext/AuthContext';
 const Navbar = () => {
-  const {user}=use(AuthContext)
+  const {user,handleSignOutmethod}=use(AuthContext)
+
+  // handle sign out function 
+   const handleSign=()=>{
+    handleSignOutmethod().then(() => {
+  console.log("signout successfully")
+}).catch((error) => {
+  console.log(error)
+});
+   }
 
     return (
         <div>
@@ -31,7 +40,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    {user?<button>SignOut</button>:<button link={"/login"}>Login</button>}
+    {user?<button onClick={handleSign}>SignOut</button>:<button link={"/login"}>Login</button>}
   </div>
 </div>
         </div>
