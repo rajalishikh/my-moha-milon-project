@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router';
 import '../../App.css';
+import { use } from 'react';
+import AuthContext from '../../AuthContext/AuthContext';
 const Navbar = () => {
+  const {user}=use(AuthContext)
+
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -27,7 +31,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">User Name </a>
+    {user?<button>SignOut</button>:<button link={"/login"}>Login</button>}
   </div>
 </div>
         </div>
