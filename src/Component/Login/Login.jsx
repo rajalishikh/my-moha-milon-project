@@ -1,15 +1,18 @@
 import { use } from "react";
 import { Link } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const {login}=use(AuthContext)
+  const notify = () => toast("Login is Succesfull");
+  
 
 
   // login button 
     const handleLogin=(e)=>{
         e.preventDefault()
-        console.log("welcome to the login page")
+        
         const name =e.target.name.value;
         const email=e.target.email.value;
         const password=e.target.password.value;
@@ -22,6 +25,7 @@ const Login = () => {
   .catch((error) => {
     console.log(error)
   });
+  notify()
 
     }
 
@@ -39,6 +43,7 @@ const Login = () => {
           <input name="password" type="password" className="input" placeholder="Password" />
           <div className=" font-medium text-green-500"> You are new User ? <Link to={'/Register'} ><span className="link link-hover text-red-500">Register</span></Link></div>
           <button className="btn btn-neutral mt-4">Login</button>
+          <ToastContainer></ToastContainer>
         </form>
       </div>
     </div>
