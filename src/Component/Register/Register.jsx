@@ -1,9 +1,10 @@
-import { use } from "react";
+import { use, useState } from "react";
 import { Link } from "react-router";
 import AuthContext from "../../AuthContext/AuthContext";
 
 const Register = () => {
   const {register}=use(AuthContext)
+  const [success,setSuccess]=useState(false);
   
   const handleRegister=(e)=>{
     e.preventDefault()
@@ -14,10 +15,13 @@ const Register = () => {
     register(email,password)
     .then((userCredential) => {
       console.log(userCredential)
+      setSuccess(true)
+
     
   })
   .catch((error) => {
     console.log(error)
+    
     
   });
     
@@ -43,6 +47,7 @@ const Register = () => {
            <input type="text" className="input" placeholder="Country name" />
           <div className=" font-medium text-green-500"> You have All ready account ? <Link to={'/login'} ><span className="link link-hover text-red-500">Login</span></Link></div>
           <button className="btn btn-neutral mt-4">Register</button>
+          {success&&<p>Registration Successfully complete</p>}
         </form>
       </div>
     </div>
