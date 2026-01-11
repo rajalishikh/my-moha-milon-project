@@ -28,6 +28,18 @@ const Navbar = () => {
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={"/login"}>Login Page </NavLink></li>
         <li><NavLink to={"/Register"}>Register page</NavLink></li>
+        
+        {user &&
+        <>
+         <li><NavLink to={"/Register"}>Profile page </NavLink></li>
+         <li><NavLink to={"/Register"}>Orders</NavLink></li>
+
+        </>
+        
+       
+        }
+       
+       
       </ul>
     </div>
     <a className="btn btn-ghost text-xl">Simple Login Page </a>
@@ -37,6 +49,12 @@ const Navbar = () => {
         <li><NavLink to={"/"}>Home</NavLink></li>
         <li><NavLink to={"/login"}>Login Page </NavLink></li>
         <li><NavLink to={"/Register"}>Register page</NavLink></li>
+        {user &&
+        <>
+         <li><NavLink to={"/Register"}>Profile page </NavLink></li>
+         <li><NavLink to={"/Register"}>Orders</NavLink></li>
+
+        </>}
     </ul>
   </div>
   <div className="navbar-end">
