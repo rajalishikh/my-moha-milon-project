@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import Home from '../Component/Home/Home';
 import Login from '../Component/Login/Login';
 import Orders from '../Component/Orders/Orders';
+import PrivateRoute from '../Component/PrivateRoute/PrivateRoute';
 import ProfilePage from '../Component/ProfilePage/ProfilePage';
 import Register from '../Component/Register/Register';
 import Root from '../Component/Root/Root';
@@ -26,11 +27,11 @@ const Router = createBrowserRouter([
        },
        {
         path:"/orders",
-        element:<Orders></Orders>
+        element:<PrivateRoute><Orders></Orders></PrivateRoute>
        },
        {
         path:"/ProfilePage",
-        element:<ProfilePage></ProfilePage>
+        element:<PrivateRoute><ProfilePage></ProfilePage></PrivateRoute>
        }
     ]
    
